@@ -3,59 +3,64 @@ import 'package:flutter/material.dart';
 class ImageAndTextCard extends StatelessWidget {
   final String label;
   final String imageUrl;
+  final Function tapped;
 
   ImageAndTextCard(
     {
       required this.label,
       required this.imageUrl,
+      required this.tapped
     }
   );
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.8,
-      height: MediaQuery.of(context).size.height * 0.3,
-      child: Stack(
-        children: [
-              Card(
-              elevation: 5,
-              child: Container(
-                child: LayoutBuilder(builder: (context, constraints) {
-                  return Container(
-                    padding: EdgeInsets.only(
-                      // top: constraints.maxHeight*0.04,
-                      // left: constraints.maxWidth*0.01,
-                      // right: constraints.maxWidth*0.01,
-                      // bottom: constraints.maxHeight*0.1
-                    ),
-                    child: Image.network(
-                      imageUrl,
-                      fit: BoxFit.cover,
-                      width: constraints.maxWidth,
-                      height: constraints.maxHeight,
-                    ),
-                    );
-                  },
-                ),
-              ),
-            ),
-            Positioned(
-              bottom: 20,
-              child: Container(
-                alignment: Alignment.topCenter,
-                width: MediaQuery.of(context).size.width * 0.8,
-                color: Colors.black54,
-                child: Text(
-                  label,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 20,
+    return InkWell(
+      onTap: () => tapped,
+      child: Container(
+        width: MediaQuery.of(context).size.width * 0.8,
+        height: MediaQuery.of(context).size.height * 0.3,
+        child: Stack(
+          children: [
+                Card(
+                elevation: 5,
+                child: Container(
+                  child: LayoutBuilder(builder: (context, constraints) {
+                    return Container(
+                      padding: EdgeInsets.only(
+                        // top: constraints.maxHeight*0.04,
+                        // left: constraints.maxWidth*0.01,
+                        // right: constraints.maxWidth*0.01,
+                        // bottom: constraints.maxHeight*0.1
+                      ),
+                      child: Image.network(
+                        imageUrl,
+                        fit: BoxFit.cover,
+                        width: constraints.maxWidth,
+                        height: constraints.maxHeight,
+                      ),
+                      );
+                    },
                   ),
                 ),
               ),
-            )
-        ],
+              Positioned(
+                bottom: 20,
+                child: Container(
+                  alignment: Alignment.topCenter,
+                  width: MediaQuery.of(context).size.width * 0.8,
+                  color: Colors.black54,
+                  child: Text(
+                    label,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                    ),
+                  ),
+                ),
+              )
+          ],
+        ),
       ),
     );
   }
