@@ -45,7 +45,7 @@ class ImageAndTextCard extends StatelessWidget {
                 ),
               ),
               Positioned(
-                bottom: 20,
+                bottom: 0,
                 child: Container(
                   alignment: Alignment.topCenter,
                   width: MediaQuery.of(context).size.width * 0.8,
