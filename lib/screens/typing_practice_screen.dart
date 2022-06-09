@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:typing_practice_app/widgets/typing_practicing.dart';
 
 class PracticingScreen extends StatelessWidget {
 
@@ -9,9 +10,9 @@ class PracticingScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('연습'),
+        title: Text('타이핑 연습'),
       ),
-      body: Text('깔'),
+      body: TypingPracticeWidget(targetText: '동백꽃 동백꽃 동백꽃 동백꽃'),
     );
     
   }
