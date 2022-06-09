@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import '../widgets/ImageAndTextCard.dart';
+import './select_practicing_list_screen.dart';
 
 class HomeScreen extends StatelessWidget {
 
-  void ImageAndTextCardTapped() {
+  static const routeName = '/home';
 
+  void ImageAndTextCardTapped(BuildContext context,) {
+    Navigator.of(context).pushNamed(SelectPracticingListScreen.routeName);
   }
 
   @override

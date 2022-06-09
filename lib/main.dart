@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:typing_practice_app/screens/home_screen.dart';
+import './screens/home_screen.dart';
+import './screens/select_practicing_list_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,9 +13,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.purple,
         accentColor: Colors.red,
       ),
-      initialRoute: '/',
+      initialRoute: HomeScreen.routeName,
       routes: {
-        '/' : (ctx) => HomeScreen(),
+        HomeScreen.routeName : (ctx) => HomeScreen(),
+        SelectPracticingListScreen.routeName : (ctx) => SelectPracticingListScreen(),
       },
     );
   }
