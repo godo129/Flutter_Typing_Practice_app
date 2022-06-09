@@ -35,7 +35,7 @@ class ImageAndTextCard extends StatelessWidget {
                       ),
                       child: Image.network(
                         imageUrl,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.contain,
                         width: constraints.maxWidth,
                         height: constraints.maxHeight,
                       ),
@@ -48,7 +48,7 @@ class ImageAndTextCard extends StatelessWidget {
                 bottom: 0,
                 child: Container(
                   alignment: Alignment.topCenter,
-                  width: MediaQuery.of(context).size.width * 0.8,
+                  width: MediaQuery.of(context).size.width,
                   color: Colors.black54,
                   child: Text(
                     label,
