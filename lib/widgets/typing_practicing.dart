@@ -28,13 +28,16 @@ class _TypingPracticeWidgetState extends State<TypingPracticeWidget> {
   }
 
   int correctedStringHere = 0 ; 
+  int uncorrectedStringHere = 0;
 
 
   void getTextWidgets(List<String> strings, List<String> compareStrings) {
 
     correctedString -= correctedStringHere;
+    uncorrectedString -= uncorrectedStringHere;
 
     correctedStringHere = 0;
+    uncorrectedStringHere = 0;
 
     outputStrings.clear();
 
@@ -51,11 +54,13 @@ class _TypingPracticeWidgetState extends State<TypingPracticeWidget> {
           correctedStringHere += 1 ;
         } else {
           outputStrings.add(Text(strings[i], style: TextStyle(color: Colors.red, fontSize: 18),));
+          uncorrectedStringHere += 1;
         }
 
         
       }
       correctedString += correctedStringHere; 
+      uncorrectedString += uncorrectedStringHere;
     });
     
   }
