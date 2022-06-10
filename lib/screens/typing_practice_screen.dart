@@ -33,6 +33,7 @@ class _PracticingScreenState extends State<PracticingScreen> {
   void initState() {
     setTimer();
     correctedString = 0;
+    duration = Duration(seconds: 1);
     // TODO: implement initState
     super.initState();
     
