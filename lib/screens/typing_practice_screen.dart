@@ -12,7 +12,7 @@ class PracticingScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('타이핑 연습'),
       ),
-      body: TypingPracticeWidget(targetText: '동백꽃 동백꽃 동백꽃 동백꽃'),
+      body: TypingPracticeWidget(targetText: 'my name is hong'.split(''),),
     );
     
   }
