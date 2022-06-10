@@ -23,30 +23,39 @@ class _TypingPracticeWidgetState extends State<TypingPracticeWidget> {
   @override
   void initState() {
     // TODO: implement initState
-    outputStrings = widget.targetText.map((e) => Text(e)).toList();
+    outputStrings = widget.targetText.map((e) => Text(e, style: TextStyle(fontSize: 17),)).toList();
     super.initState();
   }
 
+  int correctedStringHere = 0 ; 
+
 
   void getTextWidgets(List<String> strings, List<String> compareStrings) {
+
+    correctedString -= correctedStringHere;
+
+    correctedStringHere = 0;
 
     outputStrings.clear();
 
     setState(() {
       for ( var i = 0 ; i < strings.length ; i++ ) {
         if (compareStrings.length <= i) {
-          outputStrings.add(Text(strings[i]));
+          outputStrings.add(Text(strings[i], style: TextStyle(fontSize: 18),));
         } else if (compareStrings[i] == strings[i]) {
-          outputStrings.add(Text(strings[i]));
+          outputStrings.add(Text(strings[i], style: TextStyle(fontSize: 18),));
 
           if (strings[i] == ' ') {
-            correctedString -= 1 ;
+            correctedStringHere -= 1 ;
           }
-          correctedString += 1 ;
+          correctedStringHere += 1 ;
         } else {
-          outputStrings.add(Text(strings[i], style: TextStyle(color: Colors.red),));
+          outputStrings.add(Text(strings[i], style: TextStyle(color: Colors.red, fontSize: 18),));
         }
+
+        
       }
+      correctedString += correctedStringHere; 
     });
     
   }
@@ -58,8 +67,11 @@ class _TypingPracticeWidgetState extends State<TypingPracticeWidget> {
 
     return Column(
       children: <Widget>[
-        // getTextWidgets('My name s gil'.split('')),
+        SizedBox(
+          height: 15,
+        ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: outputStrings,
         ),
         Container(
