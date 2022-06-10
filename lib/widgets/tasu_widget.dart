@@ -9,8 +9,16 @@ class TasuWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      tasu + '타'
+    return Container(
+      margin: EdgeInsets.only(right: 20),
+      alignment: Alignment.topRight,
+      child: Text(
+        tasu + '타',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          fontSize: 23
+        ),
+      ),
     );
   }
 }
