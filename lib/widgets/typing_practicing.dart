@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../data.dart';
 
 class TypingPracticeWidget extends StatefulWidget {
 
@@ -37,6 +38,11 @@ class _TypingPracticeWidgetState extends State<TypingPracticeWidget> {
           outputStrings.add(Text(strings[i]));
         } else if (compareStrings[i] == strings[i]) {
           outputStrings.add(Text(strings[i]));
+
+          if (strings[i] == ' ') {
+            correctedString -= 1 ;
+          }
+          correctedString += 1 ;
         } else {
           outputStrings.add(Text(strings[i], style: TextStyle(color: Colors.red),));
         }
