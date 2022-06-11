@@ -9,6 +9,8 @@ class TypingResultScreen extends StatelessWidget {
     final title = routeArgs['title']!;
     final tasu = routeArgs['tasu']!;
     final _imageUrl = routeArgs['imageUrl']!;
+    final now = DateTime.now();
+    String dateText = now.toString().substring(0,10)+ '  ${now.hour}:${now.minute}';
 
     return Scaffold(
       appBar: AppBar(
@@ -20,6 +22,14 @@ class TypingResultScreen extends StatelessWidget {
             height: MediaQuery.of(context).size.height*0.5,
             child: Image.network(_imageUrl),
           ),
+          Text(
+            dateText,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w400,
+              ),
+          ),
          Text(
               tasu+" 타",
               textAlign: TextAlign.center,
@@ -28,7 +38,7 @@ class TypingResultScreen extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
           ),
-          Text('${TimeOfDay.now().toString()}')
+          
         ]
       ),
     );
