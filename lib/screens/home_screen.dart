@@ -13,8 +13,8 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('타이핑앱'),
       ),
-      body: Column(
-        // mainAxisAlignment: MainAxisAlignment.spaceAround,
+      body: ListView(
+        padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.11),
         // crossAxisAlignment: CrossAxisAlignment.end,
         children: <Widget>[
           ImageAndTextCard(

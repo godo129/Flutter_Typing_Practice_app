@@ -14,8 +14,22 @@ class TypingResultScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: ClipRRect(
-        child: Text(tasu),
+      body: ListView(
+        children: <Widget>[
+          Container(
+            height: MediaQuery.of(context).size.height*0.5,
+            child: Image.network(_imageUrl),
+          ),
+         Text(
+              tasu+" 타",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 30,
+                fontWeight: FontWeight.bold,
+              ),
+          ),
+          Text('${TimeOfDay.now().toString()}')
+        ]
       ),
     );
   }

@@ -108,13 +108,6 @@ class _PracticingScreenState extends State<PracticingScreen> {
  
     return Scaffold(
       appBar: AppBar(
-        leading:  FloatingActionButton(
-            child : Icon(Icons.cancel_outlined),
-            onPressed: () => {
-              Navigator.pop(context)
-            },
-          ),
-
         title: Text(title),
         actions: <Widget>[
           TasuWidget(tasu)
