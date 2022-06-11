@@ -80,11 +80,15 @@ class _TypingPracticeWidgetState extends State<TypingPracticeWidget> {
           children: outputStrings,
         ),
         Container(
-          margin: EdgeInsets.symmetric(horizontal: 5),
+          margin: EdgeInsets.symmetric(horizontal: 10),
           child: TextField(
             onChanged: (text) {
               getTextWidgets(widget.targetText, text.split(''));
             },
+            maxLength: widget.targetText.length,
+            decoration: InputDecoration(
+              counterText: ''
+            ),
           )
         )
       ],
