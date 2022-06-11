@@ -6,9 +6,6 @@ class HomeScreen extends StatelessWidget {
 
   static const routeName = '/home';
 
-  void ImageAndTextCardTapped(BuildContext context,) {
-    Navigator.of(context).pushNamed(SelectPracticingListScreen.routeName);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +20,14 @@ class HomeScreen extends StatelessWidget {
           ImageAndTextCard(
             label: '한글 타자 연습하기', 
             imageUrl: 'https://img.hankyung.com/photo/201804/BD.16374778.1.jpg',
-            tapped: ImageAndTextCardTapped,
+            language: 'Korean',
+            nextRoute: SelectPracticingListScreen.routeName,
           ),
           ImageAndTextCard(
             label: '영어 타자 연습하기', 
             imageUrl: 'https://ppss.kr/wp-content/uploads/2013/08/alphabet.jpg',
-            tapped: ImageAndTextCardTapped,
+            language: 'English',
+            nextRoute: SelectPracticingListScreen.routeName,
           ),
         ],
       )

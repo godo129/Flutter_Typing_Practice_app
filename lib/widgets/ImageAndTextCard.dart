@@ -1,22 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:typing_practice_app/screens/select_practicing_list_screen.dart';
 
 class ImageAndTextCard extends StatelessWidget {
   final String label;
   final String imageUrl;
-  final Function tapped;
+  final String nextRoute;
+  final String language;
+
+  void ImageAndTextCardTapped(BuildContext context) {
+    Navigator.of(context).pushNamed(
+      nextRoute,
+      arguments: {
+        'title': label,
+        'language':language
+      }
+    );
+  }
 
   ImageAndTextCard(
     {
       required this.label,
       required this.imageUrl,
-      required this.tapped
+      required this.nextRoute,
+      required this.language
     }
   );
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => tapped(context),
+      onTap: () => ImageAndTextCardTapped(context),
       child: Container(
         width: MediaQuery.of(context).size.width * 0.8,
         height: MediaQuery.of(context).size.height * 0.3,

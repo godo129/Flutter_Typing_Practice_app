@@ -11,22 +11,29 @@ class SelectPracticingListScreen extends StatelessWidget {
     CardInformation(label: "동백꽃", imageUrl: "https://www.upaper.net/Cover/1138291/Cover.jpg"),
   ];
 
-  void tapped(BuildContext context) {
-    Navigator.of(context).pushNamed(PracticingScreen.routeName);
-  }
+
+  // void tapped(BuildContext context) {
+  //   Navigator.of(context).pushNamed(PracticingScreen.routeName);
+  // }
 
   @override
   Widget build(BuildContext context) {
+
+    final routeArgs = ModalRoute.of(context)!.settings.arguments as Map<String, String>;
+    final title = routeArgs['title'];
+    final language = routeArgs['lanugage'];
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('연습'),
+        title: Text(title!),
       ),
       body: ListView.builder(
           itemBuilder: (ctx,index) {
             return ImageAndTextCard(
               label: practicingList[index].label, 
               imageUrl: practicingList[index].imageUrl, 
-              tapped: tapped,
+              language: 'Korean',
+              nextRoute: PracticingScreen.routeName,
               );
           },
           itemCount: practicingList.length,
