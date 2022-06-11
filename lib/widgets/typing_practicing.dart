@@ -56,8 +56,7 @@ class _TypingPracticeWidgetState extends State<TypingPracticeWidget> {
           outputStrings.add(Text(strings[i], style: TextStyle(color: Colors.red, fontSize: 18),));
           uncorrectedStringHere += 1;
         }
-
-        
+ 
       }
       correctedString += correctedStringHere; 
       uncorrectedString += uncorrectedStringHere;

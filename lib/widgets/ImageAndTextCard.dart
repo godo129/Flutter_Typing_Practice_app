@@ -6,13 +6,15 @@ class ImageAndTextCard extends StatelessWidget {
   final String imageUrl;
   final String nextRoute;
   final String language;
+  String body;
 
   void ImageAndTextCardTapped(BuildContext context) {
     Navigator.of(context).pushNamed(
       nextRoute,
       arguments: {
         'title': label,
-        'language':language
+        'language':language,
+        'body':body
       }
     );
   }
@@ -22,7 +24,8 @@ class ImageAndTextCard extends StatelessWidget {
       required this.label,
       required this.imageUrl,
       required this.nextRoute,
-      required this.language
+      required this.language,
+      this.body = ''
     }
   );
 
