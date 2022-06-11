@@ -76,6 +76,7 @@ class _TypingPracticeWidgetState extends State<TypingPracticeWidget> {
       spaceString += spaceStringHere;
 
       if (correctedString + uncorrectedString + spaceString >= fullStringLength) {
+        FocusManager.instance.primaryFocus?.unfocus();
         Navigator.popAndPushNamed(
           context, TypingResultScreen.routeName,
           arguments: {
