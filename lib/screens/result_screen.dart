@@ -8,6 +8,7 @@ class TypingResultScreen extends StatelessWidget {
     final routeArgs = ModalRoute.of(context)!.settings.arguments as Map<String, String>;
     final title = routeArgs['title']!;
     final tasu = routeArgs['tasu']!;
+    final _imageUrl = routeArgs['imageUrl']!;
 
     return Scaffold(
       appBar: AppBar(

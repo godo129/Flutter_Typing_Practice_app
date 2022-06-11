@@ -22,6 +22,7 @@ class _PracticingScreenState extends State<PracticingScreen> {
   List<String> targetText = [];
   String language = '';
   String title = '';
+  String _imageUrl = '';
 
   void setTimer() { 
     _timer = Timer.periodic(Duration(seconds: 1), (_) => addTime());
@@ -59,6 +60,7 @@ class _PracticingScreenState extends State<PracticingScreen> {
     title = routeArgs['title']!;
     language = routeArgs['language']!;
     targetText = routeArgs['body']!.split('');
+    _imageUrl = routeArgs['imageUrl']!;
     fullStringLength = targetText.length;
     // TODO: implement didChangeDependencies
     super.didChangeDependencies();
@@ -84,11 +86,11 @@ class _PracticingScreenState extends State<PracticingScreen> {
 
     for (var i = 0 ; i < targetText.length - limit ; i += limit) {
       lists.add(
-        TypingPracticeWidget(targetText: targetText.sublist(i,i+limit), title: title,)
+        TypingPracticeWidget(targetText: targetText.sublist(i,i+limit), title: title,imageUrl: _imageUrl,)
       );
     }
     lists.add(
-      TypingPracticeWidget(targetText: targetText.sublist(targetText.length-limit,targetText.length), title: title)
+      TypingPracticeWidget(targetText: targetText.sublist(targetText.length-limit,targetText.length), title: title,imageUrl: _imageUrl,)
     );
     
     return lists;

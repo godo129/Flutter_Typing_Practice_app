@@ -7,11 +7,13 @@ class TypingPracticeWidget extends StatefulWidget {
 
    List<String> targetText;
    String title;
+   String imageUrl;
 
   TypingPracticeWidget(
     {
       required this.targetText,
       required this.title,
+      required this.imageUrl,
     }
   );
 
@@ -79,6 +81,7 @@ class _TypingPracticeWidgetState extends State<TypingPracticeWidget> {
           arguments: {
             'tasu' : tasu,
             'title' : widget.title, 
+            'imageUrl' : widget.imageUrl,
           }
         );
         // Navigator.of(context).pop();

@@ -49,7 +49,7 @@ class _SelectPracticingListScreenState extends State<SelectPracticingListScreen>
           itemBuilder: (ctx,index) {
             return ImageAndTextCard(
               label: practicingList[index].title, 
-              imageUrl: "https://www.upaper.net/Cover/1138291/Cover.jpg", 
+              imageUrl: practicingList[index].imageUrl, 
               language: practicingList[index].language,
               nextRoute: PracticingScreen.routeName,
               body: practicingList[index].body,

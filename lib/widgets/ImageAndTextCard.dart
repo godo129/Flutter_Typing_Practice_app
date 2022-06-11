@@ -14,7 +14,8 @@ class ImageAndTextCard extends StatelessWidget {
       arguments: {
         'title': label,
         'language':language,
-        'body':body
+        'body':body,
+        'imageUrl': imageUrl,
       }
     );
   }
