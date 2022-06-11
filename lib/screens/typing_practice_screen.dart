@@ -21,6 +21,7 @@ class _PracticingScreenState extends State<PracticingScreen> {
 
   List<String> targetText = [];
   String language = '';
+  String title = '';
 
   void setTimer() { 
     _timer = Timer.periodic(Duration(seconds: 1), (_) => addTime());
@@ -40,15 +41,27 @@ class _PracticingScreenState extends State<PracticingScreen> {
   @override
   void initState() {
     setTimer();
+
+    
     
     duration = Duration(seconds: 1);
 
     correctedString = 0;
     uncorrectedString = 0;
     spaceString = 0;
-
+    tasu = '';
     super.initState();
     
+  }
+  @override
+  void didChangeDependencies() {
+    final routeArgs = ModalRoute.of(context)!.settings.arguments as Map<String, String>;
+    title = routeArgs['title']!;
+    language = routeArgs['language']!;
+    targetText = routeArgs['body']!.split('');
+    fullStringLength = targetText.length;
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
   }
 
   @override
@@ -59,7 +72,7 @@ class _PracticingScreenState extends State<PracticingScreen> {
 
 
 
-  List<Widget> buildTypingPracticeWidget(int len, String language) {
+  List<Widget> buildTypingPracticeWidget(int len, String language, String title) {
 
     List<Widget> lists = [];
 
@@ -69,23 +82,27 @@ class _PracticingScreenState extends State<PracticingScreen> {
       limit = (len/15).toInt();
     }
 
-    for (var i = 0 ; i < targetText.length-limit ; i += limit) {
+    for (var i = 0 ; i < targetText.length - limit ; i += limit) {
       lists.add(
-        TypingPracticeWidget(targetText: targetText.sublist(i,i+limit))
+        TypingPracticeWidget(targetText: targetText.sublist(i,i+limit), title: title,)
       );
     }
-
+    lists.add(
+      TypingPracticeWidget(targetText: targetText.sublist(targetText.length-limit,targetText.length), title: title)
+    );
+    
     return lists;
   }
 
   @override
   Widget build(BuildContext context) {
     
-    final routeArgs = ModalRoute.of(context)!.settings.arguments as Map<String, String>;
-    final title = routeArgs['title']!;
-    final language = routeArgs['language']!;
-    targetText = routeArgs['body']!.split('');
-    fullStringLength = targetText.length;
+    // final routeArgs = ModalRoute.of(context)!.settings.arguments as Map<String, String>;
+    // final title = routeArgs['title']!;
+    // final language = routeArgs['language']!;
+    // targetText = routeArgs['body']!.split('');
+    // fullStringLength = targetText.length;
+    tasu = (correctedString/duration.inSeconds * 120).toInt().toString();
  
     return Scaffold(
       appBar: AppBar(
@@ -98,11 +115,11 @@ class _PracticingScreenState extends State<PracticingScreen> {
 
         title: Text(title),
         actions: <Widget>[
-          TasuWidget((correctedString/duration.inSeconds * 120).toInt().toString())
+          TasuWidget(tasu)
         ],
       ),
       body: ListView(
-        children: buildTypingPracticeWidget(MediaQuery.of(context).size.width.toInt(),language),
+        children: buildTypingPracticeWidget(MediaQuery.of(context).size.width.toInt(),language,title),
         ),
     );
   }

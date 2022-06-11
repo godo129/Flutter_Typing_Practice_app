@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:typing_practice_app/screens/result_screen.dart';
 import '../data.dart';
 
 class TypingPracticeWidget extends StatefulWidget {
 
    List<String> targetText;
+   String title;
 
   TypingPracticeWidget(
     {
-      required this.targetText
+      required this.targetText,
+      required this.title,
     }
   );
 
@@ -70,8 +73,16 @@ class _TypingPracticeWidgetState extends State<TypingPracticeWidget> {
       uncorrectedString += uncorrectedStringHere;
       spaceString += spaceStringHere;
 
-      if (correctedString + uncorrectedString + spaceString == fullStringLength) {
-        Navigator.pop(context);
+      if (correctedString + uncorrectedString + spaceString >= fullStringLength) {
+        Navigator.popAndPushNamed(
+          context, TypingResultScreen.routeName,
+          arguments: {
+            'tasu' : tasu,
+            'title' : widget.title, 
+          }
+        );
+        // Navigator.of(context).pop();
+
       } 
       
     });
