@@ -29,15 +29,19 @@ class _TypingPracticeWidgetState extends State<TypingPracticeWidget> {
 
   int correctedStringHere = 0 ; 
   int uncorrectedStringHere = 0;
+  int spaceStringHere = 0;
 
 
-  void getTextWidgets(List<String> strings, List<String> compareStrings) {
+  void getTextWidgets(List<String> strings, List<String> compareStrings, BuildContext context) {
 
     correctedString -= correctedStringHere;
     uncorrectedString -= uncorrectedStringHere;
+    spaceString -= spaceStringHere;
 
     correctedStringHere = 0;
     uncorrectedStringHere = 0;
+    spaceStringHere = 0;
+    
 
     outputStrings.clear();
 
@@ -50,16 +54,26 @@ class _TypingPracticeWidgetState extends State<TypingPracticeWidget> {
 
           if (strings[i] == ' ') {
             correctedStringHere -= 1 ;
+            spaceStringHere += 1;
           }
           correctedStringHere += 1 ;
         } else {
           outputStrings.add(Text(strings[i], style: TextStyle(color: Colors.red, fontSize: 18),));
           uncorrectedStringHere += 1;
+          if (strings[i] == ' ') {
+            spaceStringHere += 1;
+          }
         }
  
       }
       correctedString += correctedStringHere; 
       uncorrectedString += uncorrectedStringHere;
+      spaceString += spaceStringHere;
+
+      if (correctedString + uncorrectedString + spaceString == fullStringLength) {
+        Navigator.pop(context);
+      } 
+      
     });
     
   }
@@ -82,7 +96,7 @@ class _TypingPracticeWidgetState extends State<TypingPracticeWidget> {
           margin: EdgeInsets.symmetric(horizontal: 10),
           child: TextField(
             onChanged: (text) {
-              getTextWidgets(widget.targetText, text.split(''));
+              getTextWidgets(widget.targetText, text.split(''), context);
             },
             maxLength: widget.targetText.length,
             decoration: InputDecoration(

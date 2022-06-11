@@ -16,14 +16,14 @@ class PracticingScreen extends StatefulWidget {
 }
 
 class _PracticingScreenState extends State<PracticingScreen> {
-  Timer? timer;
+  Timer? _timer;
   Duration duration = Duration();
 
   List<String> targetText = [];
   String language = '';
 
   void setTimer() { 
-    timer = Timer.periodic(Duration(seconds: 1), (_) => addTime());
+    _timer = Timer.periodic(Duration(seconds: 1), (_) => addTime());
   }
 
   void addTime() {
@@ -40,12 +40,24 @@ class _PracticingScreenState extends State<PracticingScreen> {
   @override
   void initState() {
     setTimer();
-    correctedString = 0;
+    
     duration = Duration(seconds: 1);
+
+    correctedString = 0;
+    uncorrectedString = 0;
+    spaceString = 0;
 
     super.initState();
     
   }
+
+  @override
+  void dispose() {
+    _timer!.cancel();
+    super.dispose();
+  }
+
+
 
   List<Widget> buildTypingPracticeWidget(int len, String language) {
 
@@ -73,9 +85,17 @@ class _PracticingScreenState extends State<PracticingScreen> {
     final title = routeArgs['title']!;
     final language = routeArgs['language']!;
     targetText = routeArgs['body']!.split('');
+    fullStringLength = targetText.length;
  
     return Scaffold(
       appBar: AppBar(
+        leading:  FloatingActionButton(
+            child : Icon(Icons.cancel_outlined),
+            onPressed: () => {
+              Navigator.pop(context)
+            },
+          ),
+
         title: Text(title),
         actions: <Widget>[
           TasuWidget((correctedString/duration.inSeconds * 120).toInt().toString())
