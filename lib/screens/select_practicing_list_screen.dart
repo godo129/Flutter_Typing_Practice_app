@@ -57,13 +57,13 @@ class _SelectPracticingListScreenState extends State<SelectPracticingListScreen>
           },
           itemCount: practicingList.length,
         ),
-        floatingActionButton: FloatingActionButton(
-          child: Icon(
-            Icons.account_tree_sharp
-          ),
-          onPressed: () {},
-          backgroundColor: Colors.grey,
-        ),
+        // floatingActionButton: FloatingActionButton(
+        //   child: Icon(
+        //     Icons.account_tree_sharp
+        //   ),
+        //   onPressed: () {},
+        //   backgroundColor: Colors.grey,
+        // ),
     );
   }
 }
