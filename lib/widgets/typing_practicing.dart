@@ -36,6 +36,41 @@ class _TypingPracticeWidgetState extends State<TypingPracticeWidget> {
   int uncorrectedStringHere = 0;
   int spaceStringHere = 0;
 
+  bool isKorean(String input){
+      bool isKorean = false;
+      int inputToUniCode   = input.codeUnits[0];
+
+      isKorean =  (inputToUniCode >= 12593 && inputToUniCode <= 12643) ? true : (inputToUniCode >= 44032 && inputToUniCode <= 55203) ? true : false;
+
+      return isKorean;
+  }
+
+  bool checkBottomConsonant(String input){
+    bool result = false;
+    if(isKorean(input)){
+       result = ((input.runes.first- 0xAC00)/(28*21))<0 ? false : (((input.runes.first - 0xAC00) % 28 !=0) ? true : false);
+    }
+    return result;
+  }
+
+  int koreanCharcterLength(String char) {
+
+    List<String> syllableList = []; 
+    int transUnicode = (char.runes.last - 0xAC00);
+    int frontIndex = (transUnicode/(21*28)).toInt();
+    String front = chosungList[frontIndex];
+    syllableList.add(front);
+    int middleIndex = (((transUnicode-(frontIndex*21*28))/28).toInt());
+    String middle = jungsungList[middleIndex];
+    syllableList.add(middle);
+    if (checkBottomConsonant(char)) {
+      int lastIndex = (transUnicode-(frontIndex*21*28)-(middleIndex*28)-1);
+      String last = jongsungList[lastIndex];
+      syllableList.add(last);
+    }
+    return syllableList.length;
+  }
+
 
   void getTextWidgets(List<String> strings, List<String> compareStrings, BuildContext context) {
 
@@ -52,16 +87,21 @@ class _TypingPracticeWidgetState extends State<TypingPracticeWidget> {
 
     setState(() {
       for ( var i = 0 ; i < strings.length ; i++ ) {
+
         if (compareStrings.length <= i) {
           outputStrings.add(Text(strings[i], style: TextStyle(fontSize: 18),));
         } else if (compareStrings[i] == strings[i]) {
           outputStrings.add(Text(strings[i], style: TextStyle(fontSize: 18),));
 
           if (strings[i] == ' ') {
-            correctedStringHere -= 1 ;
+            // correctedStringHere -= 1 ;
             spaceStringHere += 1;
+          }  else if (isKorean(strings[i])) {
+            correctedStringHere += koreanCharcterLength(strings[i]);
+          } else {
+            correctedStringHere += 1 ;
           }
-          correctedStringHere += 1 ;
+          
         } else {
           outputStrings.add(Text(strings[i], style: TextStyle(color: Colors.red, fontSize: 18),));
           uncorrectedStringHere += 1;
@@ -93,6 +133,7 @@ class _TypingPracticeWidgetState extends State<TypingPracticeWidget> {
     
   }
 
+  
   final textController = TextEditingController();
   
   @override
