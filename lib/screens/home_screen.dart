@@ -11,7 +11,12 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('타이핑앱'),
+        centerTitle: true,
+        title: Text(
+          '타이핑',
+          textAlign: TextAlign.center,
+        ),
+        leading: Icon(Icons.keyboard_alt_outlined),
       ),
       body: ListView(
         padding: EdgeInsets.only(top: MediaQuery.of(context).size.height*0.11),
