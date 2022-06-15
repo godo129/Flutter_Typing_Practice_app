@@ -18,12 +18,12 @@ TextModel(
   imageUrl: 'https://i.etsystatic.com/5160625/r/il/7af67c/625821452/il_340x270.625821452_duej.jpg'
 ),
 
-TextModel(
-  title: "Rapunzel", 
-  body: "There once lived a man and his wife, who had long wished for a child, but in vain.  Now there was at the back of their house a little window which overlooked a beautiful garden full of the finest vegetables and flowers; but there was a high wall all round it, and no one ventured into it, for it belonged to a witch of great might, and of whom all the world was afraid. One day, when the wife was standing at the window, and looking into the garden, she saw a bed filled with the finest rampion; and it looked so fresh and green that she began to wish for some; and at length she longed for it greatly. This went on for days, and she knew she could not get the rampion, she pined away, and grew pale and miserable.  Then the man was uneasy, and asked: \"What is the matter, dear wife?\" \"Oh,\" answered she, \"I shall die unless I can have some of the rampi-on to eat that grows in the garden at the back of our house.\"", 
-  language: "English",
-  imageUrl: 'https://t3.ftcdn.net/jpg/03/17/16/08/360_F_317160844_FHPgg183sdaEdNmkZaxWvYuNMcHOXgXd.jpg',
-),
+// TextModel(
+//   title: "Rapunzel", 
+//   body: "There once lived a man and his wife, who had long wished for a child, but in vain.  Now there was at the back of their house a little window which overlooked a beautiful garden full of the finest vegetables and flowers; but there was a high wall all round it, and no one ventured into it, for it belonged to a witch of great might, and of whom all the world was afraid. One day, when the wife was standing at the window, and looking into the garden, she saw a bed filled with the finest rampion; and it looked so fresh and green that she began to wish for some; and at length she longed for it greatly. This went on for days, and she knew she could not get the rampion, she pined away, and grew pale and miserable.  Then the man was uneasy, and asked: \"What is the matter, dear wife?\" \"Oh,\" answered she, \"I shall die unless I can have some of the rampi-on to eat that grows in the garden at the back of our house.\"", 
+//   language: "English",
+//   imageUrl: 'https://t3.ftcdn.net/jpg/03/17/16/08/360_F_317160844_FHPgg183sdaEdNmkZaxWvYuNMcHOXgXd.jpg',
+// ),
 
 TextModel(
   title: "The Wind and the Sun", 
